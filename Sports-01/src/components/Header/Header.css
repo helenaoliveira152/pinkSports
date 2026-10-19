@@ -1,0 +1,220 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.topbar{
+
+    height:35px;
+
+    background:#ffdce7;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:15px;
+
+    font-size:14px;
+
+    color:#555;
+
+}
+
+header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 40px;
+
+    background:white;
+
+}
+
+.logo h1{
+
+    font-size:45px;
+
+    color:#222;
+
+}
+
+.logo span{
+
+    color:#e33d83;
+
+}
+
+.logo small{
+
+    letter-spacing:3px;
+
+    color:#666;
+
+}
+
+.search{
+
+    width:520px;
+
+    height:45px;
+
+    display:flex;
+
+}
+
+.search input{
+
+    flex:1;
+
+    border:1px solid #ddd;
+
+    border-right:none;
+
+    border-radius:25px 0 0 25px;
+
+    padding-left:20px;
+
+    outline:none;
+
+}
+
+.search button{
+
+    width:60px;
+
+    border:none;
+
+    background:white;
+
+    border:1px solid #ddd;
+
+    border-left:none;
+
+    border-radius:0 25px 25px 0;
+
+    cursor:pointer;
+
+    color:#444;
+
+    font-size:18px;
+
+}
+
+.user{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:30px;
+
+}
+
+.user a{
+
+    color:#444;
+
+    text-decoration:none;
+
+    font-size:14px;
+
+}
+
+.icons{
+
+    display:flex;
+
+    gap:30px;
+
+}
+
+.icon{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    font-size:20px;
+
+    color:#333;
+
+}
+
+.icon span{
+
+    font-size:13px;
+
+    margin-top:5px;
+
+}
+
+nav{
+
+    height:55px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 40px;
+
+    border-top:1px solid #eee;
+
+    border-bottom:1px solid #eee;
+
+    background:white;
+
+}
+
+.menu-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
+
+nav ul{
+
+    list-style:none;
+
+    display:flex;
+
+    gap:40px;
+
+}
+
+nav li{
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+nav li:hover{
+
+    color:#e33d83;
+
+}

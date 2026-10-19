@@ -1,13 +1,16 @@
-import { useState } from 'react'
-
 import './App.css'
+import Banner from './components/Banner/banner';
+import Header from "./components/Header/Header";
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-  
-  )
+    <>
+      <Header />
+      <Banner/>
+    </>
+  );
+
 }
 
-export default App
+export default App;
