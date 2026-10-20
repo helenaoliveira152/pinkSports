@@ -1,16 +1,107 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
 }
 
 html,
 body,
-#root{
-    width:100%;
-    overflow-x:hidden;
+#root {
+    width: 100%;
+    overflow-x: hidden;
 }
 
-body{
-    background:#f8f8f8;
+body {
+    background: #f8f8f8;
+}
+
+/* Quadros das categorias */
+.secao-produtos {
+    width: calc(100% - 40px);
+    min-height: 400px;
+    margin: 20px;
+    padding: 40px 50px;
+    scroll-margin-top: 100px;
+
+    background: #fff5f8;
+    border: 1px solid #a84264;
+    border-radius: 18px;
+}
+
+/* Títulos dentro dos quadrados rosa */
+.secao-produtos h2 {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 14px 22px;
+    color: #c45e76;
+    background: #fce1eb;
+
+    font-size: 32px;
+    border: 1px solid #c78ea2;
+    border-radius: 14px;
+}
+
+/* Ícones dos títulos */
+.secao-produtos h2 svg {
+    width: 32px;
+    height: 32px;
+    color: #c45e76;
+    flex-shrink: 0;
+}
+
+/* Links do menu */
+nav ul {
+    list-style: none;
+}
+
+nav ul li a {
+    color: #000;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+nav ul li a:hover {
+    color: #c45e76;
+}
+
+/* Menu lateral */
+.menu-left {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.menu-left:hover {
+    color: #c45e76;
+}
+
+/* Ajuste para telas pequenas */
+@media (max-width: 600px) {
+    .secao-produtos {
+        width: calc(100% - 24px);
+        margin: 12px;
+        padding: 30px 20px;
+        min-height: 300px;
+    }
+
+    .secao-produtos h2 {
+        font-size: 24px;
+        padding: 12px 16px;
+        gap: 8px;
+    }
+
+    .secao-produtos h2 svg {
+        width: 25px;
+        height: 25px;
+    }
 }
