@@ -1,6 +1,12 @@
 
-import { FaTrash } from "react-icons/fa";
-import { useCarrinho } from "./context/CarrinhoContext";
+import {
+  FaTrash,
+  FaMinus,
+  FaPlus,
+  FaShoppingCart,
+} from "react-icons/fa";
+
+import { useCarrinho } from "../../context/CarrinhoContext";
 import "./carrinho.css";
 
 export default function Carrinho() {
@@ -8,85 +14,108 @@ export default function Carrinho() {
     carrinho,
     removerCarrinho,
     alterarQuantidade,
+    totalCarrinho,
   } = useCarrinho();
 
-  const total = carrinho.reduce(
-    (soma, produto) =>
-      soma + produto.preco * produto.quantidade,
-    0
-  );
+  function formatarPreco(valor) {
+    return Number(valor).toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+  }
 
   return (
-    <section className="carrinho-conteudo">
+    <section className="carrinho-container">
+      <h2>
+        <FaShoppingCart /> Meu Carrinho
+      </h2>
+
       {carrinho.length === 0 ? (
-        <p className="carrinho-vazio">
-          Teu carrinho está vazio. Adiciona algum produto!
-        </p>
+        <div className="carrinho-vazio">
+          <FaShoppingCart size={35} />
+          <p>Seu carrinho está vazio.</p>
+          <span>Adicione suas peças favoritas!</span>
+        </div>
       ) : (
         <>
-          {carrinho.map((produto) => (
-            <article className="item-carrinho" key={produto.id}>
-              <img src={produto.imagem} alt={produto.nome} />
+          <div className="carrinho-lista">
+            {carrinho.map((produto) => (
+              <article
+                className="carrinho-item"
+                key={produto.id}
+              >
+                <div className="carrinho-item-info">
+                  <h3>{produto.nome}</h3>
 
-              <div className="detalhes-carrinho">
-                <h3>{produto.nome}</h3>
+                  <p>
+                    Preço unitário: {formatarPreco(produto.preco)}
+                  </p>
 
-                <p>
-                  {produto.preco.toLocaleString("pt-BR", {
-                    style: "currency",
-                    currency: "BRL",
-                  })}
-                </p>
+                  <strong>
+                    Subtotal:{" "}
+                    {formatarPreco(
+                      Number(produto.preco) *
+                        (produto.quantidade || 1)
+                    )}
+                  </strong>
+                </div>
 
-                <div className="quantidade-controle">
+                <div className="carrinho-controles">
                   <button
                     type="button"
                     onClick={() =>
                       alterarQuantidade(
                         produto.id,
-                        produto.quantidade - 1
+                        (produto.quantidade || 1) - 1
                       )
                     }
-                    disabled={produto.quantidade <= 1}
+                    disabled={(produto.quantidade || 1) <= 1}
+                    aria-label="Diminuir quantidade"
                   >
-                    −
+                    <FaMinus />
                   </button>
 
-                  <span>{produto.quantidade}</span>
+                  <span>{produto.quantidade || 1}</span>
 
                   <button
                     type="button"
                     onClick={() =>
                       alterarQuantidade(
                         produto.id,
-                        produto.quantidade + 1
+                        (produto.quantidade || 1) + 1
                       )
                     }
+                    aria-label="Aumentar quantidade"
                   >
-                    +
+                    <FaPlus />
+                  </button>
+
+                  <button
+                    type="button"
+                    className="carrinho-remover"
+                    onClick={() => removerCarrinho(produto.id)}
+                    aria-label={`Remover ${produto.nome}`}
+                  >
+                    <FaTrash />
                   </button>
                 </div>
-              </div>
+              </article>
+            ))}
+          </div>
 
-              <button
-                type="button"
-                className="remover-carrinho"
-                onClick={() => removerCarrinho(produto.id)}
-                aria-label={`Remover ${produto.nome}`}
-              >
-                <FaTrash />
-              </button>
-            </article>
-          ))}
+          <div className="carrinho-total">
+            <h3>
+              Total: {formatarPreco(totalCarrinho)}
+            </h3>
 
-          <div className="total-carrinho">
-            <strong>
-              Total:{" "}
-              {total.toLocaleString("pt-BR", {
-                style: "currency",
-                currency: "BRL",
-              })}
-            </strong>
+            <p>
+              {carrinho.reduce(
+                (soma, produto) =>
+                  soma + (produto.quantidade || 1),
+                0
+              )}{" "}
+              unidade(s) no carrinho
+            </p>
           </div>
         </>
       )}

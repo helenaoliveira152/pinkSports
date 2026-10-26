@@ -18,7 +18,7 @@ export function CarrinhoProvider({ children }) {
     }
   });
 
-  // Salva o carrinho no navegador sempre que ele mudar
+  // Salva o carrinho no navegador
   useEffect(() => {
     try {
       localStorage.setItem(
@@ -58,7 +58,7 @@ export function CarrinhoProvider({ children }) {
     });
   }
 
-  // Remove um produto do carrinho
+  // Remove um produto
   function removerCarrinho(id) {
     setCarrinho((atuais) =>
       atuais.filter((item) => item.id !== id)
@@ -80,16 +80,16 @@ export function CarrinhoProvider({ children }) {
     );
   }
 
-  // Calcula a quantidade total de unidades
+  // Quantidade total de unidades
   const quantidadeTotal = carrinho.reduce(
     (total, item) => total + (item.quantidade || 1),
     0
   );
 
-  // Calcula o preço total dos produtos
+  // Valor total da compra
   const totalCarrinho = carrinho.reduce(
     (total, item) =>
-      total + item.preco * (item.quantidade || 1),
+      total + Number(item.preco) * (item.quantidade || 1),
     0
   );
 
