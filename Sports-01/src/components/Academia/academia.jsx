@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { FaHeart, FaShoppingCart } from "react-icons/fa";
 import "./academia.css";
+import { useCarrinho } from "../../context/CarrinhoContext";
 
 const produtos = [
   {
@@ -30,6 +31,7 @@ const produtos = [
 export default function Academia() {
   const [favoritos, setFavoritos] = useState([]);
   const [carrinho, setCarrinho] = useState([]);
+  const [notificacao, setNotificacao] = useState("");
 
   function alternarFavorito(id) {
     setFavoritos((atuais) =>
@@ -41,15 +43,29 @@ export default function Academia() {
 
   function adicionarCarrinho(produto) {
     setCarrinho((atuais) => [...atuais, produto]);
+    setNotificacao(`"${produto.nome}" foi adicionado ao carrinho!`);
   }
 
   function comprarAgora(produto) {
     adicionarCarrinho(produto);
-    alert(`"${produto.nome}" foi adicionado ao carrinho!`);
   }
 
   return (
     <div className="academia">
+      {notificacao && (
+        <div className="notificacao" role="status">
+          <span>{notificacao}</span>
+
+          <button
+            type="button"
+            onClick={() => setNotificacao("")}
+            aria-label="Fechar notificação"
+          >
+            ×
+          </button>
+        </div>
+      )}
+
       <div className="produtos-grid">
         {produtos.map((produto) => (
           <article className="produto-card" key={produto.id}>
