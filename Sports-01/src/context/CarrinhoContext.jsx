@@ -1,4 +1,5 @@
-
+import { useState } from "react";''
+import { useCarrinho } from "../../context/CarrinhoContext.jsx";
 import {
   createContext,
   useContext,

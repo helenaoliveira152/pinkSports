@@ -3,6 +3,7 @@ import "./App.css";
 
 import Header from "./components/Header/Header";
 import Roupa from "./components/Roupa/roupa.jsx";
+import Academia from "./components/Academia/academia.jsx";
 import Carrinho from "./components/Carrinho/carrinho.jsx";
 
 import { CarrinhoProvider } from "./context/CarrinhoContext.jsx";
@@ -59,6 +60,7 @@ function AppConteudo() {
           <h2>
             <PiBarbell /> Academia
           </h2>
+          <Academia />
         </section>
 
         <section id="esportes" className="secao-produtos">
@@ -89,7 +91,6 @@ function AppConteudo() {
           <h2>
             <PiShoppingBag /> Carrinho
           </h2>
-
           <Carrinho />
         </section>
       </main>
