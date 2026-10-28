@@ -1,5 +1,4 @@
-import { useState } from "react";''
-import { useCarrinho } from "../../context/CarrinhoContext.jsx";
+
 import {
   createContext,
   useContext,
@@ -19,7 +18,6 @@ export function CarrinhoProvider({ children }) {
     }
   });
 
-  // Salva o carrinho no navegador
   useEffect(() => {
     try {
       localStorage.setItem(
@@ -31,7 +29,6 @@ export function CarrinhoProvider({ children }) {
     }
   }, [carrinho]);
 
-  // Adiciona um produto ou aumenta sua quantidade
   function adicionarCarrinho(produto) {
     setCarrinho((atuais) => {
       const existente = atuais.find(
@@ -59,14 +56,12 @@ export function CarrinhoProvider({ children }) {
     });
   }
 
-  // Remove um produto
   function removerCarrinho(id) {
     setCarrinho((atuais) =>
       atuais.filter((item) => item.id !== id)
     );
   }
 
-  // Altera a quantidade de um produto
   function alterarQuantidade(id, quantidade) {
     if (!Number.isInteger(quantidade) || quantidade < 1) {
       return;
@@ -81,13 +76,11 @@ export function CarrinhoProvider({ children }) {
     );
   }
 
-  // Quantidade total de unidades
   const quantidadeTotal = carrinho.reduce(
     (total, item) => total + (item.quantidade || 1),
     0
   );
 
-  // Valor total da compra
   const totalCarrinho = carrinho.reduce(
     (total, item) =>
       total + Number(item.preco) * (item.quantidade || 1),

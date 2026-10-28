@@ -1,10 +1,10 @@
 
 import { useState } from "react";
 import { FaHeart, FaShoppingCart } from "react-icons/fa";
-import { useCarrinho } from "../context/CarrinhoContext";
+import { useCarrinho } from "../../context/CarrinhoContext.jsx";    
 
 export default function ProdutoCard({ produto }) {
-  const [favorito, setFavorito] = useState(false);
+  const [favorito, setFavorito] = useState(false)
   const { adicionarCarrinho } = useCarrinho();
 
   function adicionarAoCarrinho() {
