@@ -1,5 +1,6 @@
-import ProdutoCard from "../ProdutoCard.jsx";
-import "./acessorios.css";
+
+import ProdutoCard from "../ProdutoCard/ProdutoCard.jsx";
+import "./acessorio.css";
 
 const produtos = [
   {

@@ -3,7 +3,6 @@ import {
   FaTrash,
   FaMinus,
   FaPlus,
-  FaShoppingCart,
 } from "react-icons/fa";
 
 import { useCarrinho } from "../../context/CarrinhoContext";
@@ -25,44 +24,41 @@ export default function Carrinho() {
   }
 
   return (
-    <section className="carrinho-container">
-      <h2>
-        <FaShoppingCart /> Meu Carrinho
-      </h2>
-
+    <div className="carrinho-conteudo">
       {carrinho.length === 0 ? (
         <div className="carrinho-vazio">
-          <FaShoppingCart size={35} />
           <p>Seu carrinho está vazio.</p>
           <span>Adicione suas peças favoritas!</span>
         </div>
       ) : (
         <>
-          <div className="carrinho-lista">
-            {carrinho.map((produto) => (
-              <article
-                className="carrinho-item"
-                key={produto.id}
-              >
-                <div className="carrinho-item-info">
-                  <h3>{produto.nome}</h3>
+          {carrinho.map((produto) => (
+            <article
+              className="item-carrinho"
+              key={produto.id}
+            >
+              <img
+                src={produto.imagem}
+                alt={produto.nome}
+              />
 
-                  <p>
-                    Preço unitário: {formatarPreco(produto.preco)}
-                  </p>
+              <div className="detalhes-carrinho">
+                <h3>{produto.nome}</h3>
 
-                  <strong>
-                    Subtotal:{" "}
-                    {formatarPreco(
-                      Number(produto.preco) *
-                        (produto.quantidade || 1)
-                    )}
-                  </strong>
-                </div>
+                <p>
+                  Preço unitário: {formatarPreco(produto.preco)}
+                </p>
 
-                <div className="carrinho-controles">
+                <strong>
+                  Subtotal:{" "}
+                  {formatarPreco(
+                    Number(produto.preco) *
+                      (produto.quantidade || 1)
+                  )}
+                </strong>
+
+                <div className="quantidade-controle">
                   <button
-                    type="button"
                     onClick={() =>
                       alterarQuantidade(
                         produto.id,
@@ -70,7 +66,6 @@ export default function Carrinho() {
                       )
                     }
                     disabled={(produto.quantidade || 1) <= 1}
-                    aria-label="Diminuir quantidade"
                   >
                     <FaMinus />
                   </button>
@@ -78,35 +73,31 @@ export default function Carrinho() {
                   <span>{produto.quantidade || 1}</span>
 
                   <button
-                    type="button"
                     onClick={() =>
                       alterarQuantidade(
                         produto.id,
                         (produto.quantidade || 1) + 1
                       )
                     }
-                    aria-label="Aumentar quantidade"
                   >
                     <FaPlus />
                   </button>
 
                   <button
-                    type="button"
-                    className="carrinho-remover"
-                    onClick={() => removerCarrinho(produto.id)}
-                    aria-label={`Remover ${produto.nome}`}
+                    className="remover-carrinho"
+                    onClick={() =>
+                      removerCarrinho(produto.id)
+                    }
                   >
                     <FaTrash />
                   </button>
                 </div>
-              </article>
-            ))}
-          </div>
+              </div>
+            </article>
+          ))}
 
-          <div className="carrinho-total">
-            <h3>
-              Total: {formatarPreco(totalCarrinho)}
-            </h3>
+          <div className="total-carrinho">
+            <h2>Total: {formatarPreco(totalCarrinho)}</h2>
 
             <p>
               {carrinho.reduce(
@@ -119,6 +110,6 @@ export default function Carrinho() {
           </div>
         </>
       )}
-    </section>
+    </div>
   );
 }

@@ -1,0 +1,144 @@
+
+.promocoes {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+}
+
+.promocoes .produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    width: 100%;
+}
+
+.promocoes .produto-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+    padding: 18px;
+    border: 1px solid #f0d4de;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,.05);
+}
+
+.promocoes .produto-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    border-radius: 12px;
+    background: #fff5f8;
+}
+
+.promocoes .produto-card h3 {
+    margin: 0;
+    color: #333;
+    font-size: 20px;
+}
+
+.promocoes .produto-card p {
+    margin: 0;
+    color: #777;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.promocoes .produto-card strong {
+    color: #ce587c;
+    font-size: 21px;
+}
+
+.promocoes .produto-card button {
+    width: 100%;
+    min-height: 42px;
+    padding: 12px;
+    border-radius: 9px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.promocoes .produto-card .comprar {
+    border: none;
+    background: #ce587c;
+    color: #fff;
+}
+
+.promocoes .produto-card .comprar:hover {
+    background: #b94367;
+}
+
+.promocoes .produto-card .adicionar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #ce587c;
+    background: #fff;
+    color: #ce587c;
+}
+
+.promocoes .produto-card .adicionar:hover {
+    background: #fff0f5;
+}
+
+.promocoes .produto-card .favorito {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background: #fff;
+    color: #ce587c;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+
+.promocoes .produto-card .favorito.ativo {
+    background: #ce587c;
+    color: #fff;
+}
+
+@media (max-width:700px){
+
+    .promocoes .produtos-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+    }
+
+    .promocoes .produto-card{
+        padding:10px;
+    }
+
+    .promocoes .produto-card img{
+        height:150px;
+    }
+
+    .promocoes .produto-card h3{
+        font-size:16px;
+    }
+
+    .promocoes .produto-card strong{
+        font-size:18px;
+    }
+
+}
+
+@media (max-width:420px){
+
+    .promocoes .produtos-grid{
+        grid-template-columns:1fr;
+    }
+
+    .promocoes .produto-card img{
+        height:200px;
+    }
+
+}

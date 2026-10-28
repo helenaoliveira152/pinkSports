@@ -1,38 +1,40 @@
-
 .banner {
   width: 100%;
-  min-height: 575px;
-  position: relative;
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  height: calc(100vh - 130px);
+  min-height: 700px;
 
   display: flex;
   align-items: center;
-  padding: 50px;
+
+  position: relative;
+  overflow: hidden;
+
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  padding: 0 70px;
   box-sizing: border-box;
 }
 
 .banner-conteudo {
-  max-width: 650px;
-  position: relative;
-  z-index: 1;
+  max-width: 600px;
+  z-index: 2;
 }
 
 .banner-subtitulo {
-  color: #bd6274;
+  color: #c45d74;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 700;
   letter-spacing: 5px;
   margin-bottom: 20px;
 }
 
 .banner h1 {
   color: #4e3932;
-  font-size: 64px;
-  line-height: 1.1;
-  margin: 0 0 25px;
+  font-size: 72px;
+  line-height: 1.05;
+  margin-bottom: 30px;
 }
 
 .banner h1 span {
@@ -43,58 +45,54 @@
 
 .banner-descricao {
   color: #69554b;
-  font-size: 24px;
+  font-size: 28px;
   line-height: 1.5;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .banner-botao {
   display: inline-flex;
   align-items: center;
-  gap: 20px;
-  padding: 18px 40px;
+  justify-content: center;
+  gap: 15px;
 
-  background-color: #b34762;
+  padding: 18px 42px;
+
+  background: #b34762;
   color: white;
-  border-radius: 40px;
 
+  border-radius: 50px;
   text-decoration: none;
-  font-size: 24px;
+
+  font-size: 22px;
   font-weight: bold;
-  transition: 0.3s;
+
+  transition: .3s;
 }
 
 .banner-botao:hover {
-  background-color: #a94760;
-  transform: translateY(-2px);
+  background: #a33d57;
+  transform: translateY(-3px);
+}
+
+@media (max-width: 1024px) {
+  .banner {
+    height: calc(100vh - 120px);
+    padding: 40px;
+  }
+
+  .banner h1 {
+    font-size: 56px;
+  }
+
+  .banner-descricao {
+    font-size: 22px;
+  }
 }
 
 @media (max-width: 768px) {
   .banner {
-    min-height: 500px;
-    padding: 25px;
-    background-position: 60% center;
-  }
-
-  .banner-conteudo {
-    max-width: 100%;
-  }
-
-  .banner h1 {
-    font-size: 40px;
-  }
-
-  .banner-subtitulo {
-    font-size: 13px;
-    letter-spacing: 2px;
-  }
-
-  .banner-descricao {
-    font-size: 17px;
-  }
-
-  .banner-botao {
-    font-size: 18px;
-    padding: 14px 25px;
+    min-height: 600px;
+    height: auto;
   }
 }

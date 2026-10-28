@@ -1,6 +1,6 @@
 
 import ProdutoCard from "../ProdutoCard/ProdutoCard.jsx";
-import "./academia.css";
+import "./calcado.css";
 
 const produtos = [
   {
