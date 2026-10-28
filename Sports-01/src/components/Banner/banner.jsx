@@ -1,9 +1,14 @@
-
 import "./banner.css";
+import bannerImg from "../../assets/pink.png";
 
 function Banner() {
   return (
-    <section className="banner">
+    <section
+      className="banner"
+      style={{
+        backgroundImage: `url(${bannerImg})`,
+      }}
+    >
       <div className="banner-conteudo">
         <p className="banner-subtitulo">
           MOVIMENTO É LIBERDADE ♥

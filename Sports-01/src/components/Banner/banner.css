@@ -4,7 +4,6 @@
   min-height: 575px;
   position: relative;
 
-  background-image: url("/src/assets/pink.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -55,7 +54,7 @@
   gap: 20px;
   padding: 18px 40px;
 
-  background-color: oklch(48.184% 0.13189 9.196);
+  background-color: #b34762;
   color: white;
   border-radius: 40px;
 

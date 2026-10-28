@@ -2,11 +2,10 @@
 import "./App.css";
 
 import Header from "./components/Header/Header";
+import Banner from "./components/Banner/banner";
 import Roupa from "./components/Roupa/roupa.jsx";
 import Academia from "./components/Academia/academia.jsx";
 import Carrinho from "./components/Carrinho/carrinho.jsx";
-
-import { CarrinhoProvider } from "./context/CarrinhoContext.jsx";
 
 import {
   PiTShirt,
@@ -35,6 +34,8 @@ function AppConteudo() {
   return (
     <>
       <Header onNavigate={navegarPara} />
+
+      <Banner />
 
       <main>
         <section id="roupas" className="secao-produtos">
@@ -99,11 +100,7 @@ function AppConteudo() {
 }
 
 function App() {
-  return (
-    <CarrinhoProvider>
-      <AppConteudo />
-    </CarrinhoProvider>
-  );
+  return <AppConteudo />;
 }
 
 export default App;
