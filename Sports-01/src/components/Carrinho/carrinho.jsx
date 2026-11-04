@@ -1,10 +1,4 @@
-
-import {
-  FaTrash,
-  FaMinus,
-  FaPlus,
-} from "react-icons/fa";
-
+import { FaTrash, FaMinus, FaPlus } from "react-icons/fa";
 import { useCarrinho } from "../../context/CarrinhoContext";
 import "./carrinho.css";
 
@@ -23,20 +17,22 @@ export default function Carrinho() {
     });
   }
 
+  const quantidadeTotal = carrinho.reduce(
+    (total, produto) => total + (produto.quantidade || 1),
+    0
+  );
+
   return (
     <div className="carrinho-conteudo">
       {carrinho.length === 0 ? (
         <div className="carrinho-vazio">
-          <p>Seu carrinho está vazio.</p>
-          <span>Adicione suas peças favoritas!</span>
+          <h3>🛒 Seu carrinho está vazio</h3>
+          <p>Adicione seus produtos favoritos!</p>
         </div>
       ) : (
         <>
           {carrinho.map((produto) => (
-            <article
-              className="item-carrinho"
-              key={produto.id}
-            >
+            <article className="item-carrinho" key={produto.id}>
               <img
                 src={produto.imagem}
                 alt={produto.nome}
@@ -45,17 +41,16 @@ export default function Carrinho() {
               <div className="detalhes-carrinho">
                 <h3>{produto.nome}</h3>
 
-                <p>
+                <p className="preco">
                   Preço unitário: {formatarPreco(produto.preco)}
                 </p>
 
-                <strong>
+                <p className="subtotal">
                   Subtotal:{" "}
                   {formatarPreco(
-                    Number(produto.preco) *
-                      (produto.quantidade || 1)
+                    Number(produto.preco) * (produto.quantidade || 1)
                   )}
-                </strong>
+                </p>
 
                 <div className="quantidade-controle">
                   <button
@@ -85,9 +80,7 @@ export default function Carrinho() {
 
                   <button
                     className="remover-carrinho"
-                    onClick={() =>
-                      removerCarrinho(produto.id)
-                    }
+                    onClick={() => removerCarrinho(produto.id)}
                   >
                     <FaTrash />
                   </button>
@@ -99,14 +92,7 @@ export default function Carrinho() {
           <div className="total-carrinho">
             <h2>Total: {formatarPreco(totalCarrinho)}</h2>
 
-            <p>
-              {carrinho.reduce(
-                (soma, produto) =>
-                  soma + (produto.quantidade || 1),
-                0
-              )}{" "}
-              unidade(s) no carrinho
-            </p>
+            <p>{quantidadeTotal} unidade(s) no carrinho</p>
           </div>
         </>
       )}

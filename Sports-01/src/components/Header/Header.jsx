@@ -1,14 +1,14 @@
-
 import { useState } from "react";
 import SearchBar from "./SearchBar/SearchBar";
 import "./Header.css";
+
 import {
   FaHeart,
   FaShoppingCart,
   FaBars,
 } from "react-icons/fa";
 
-export default function Header({ onNavigate }) {
+export default function Header({ onNavigate, abrirCarrinho }) {
   const [filtrosAbertos, setFiltrosAbertos] = useState(false);
   const [corSelecionada, setCorSelecionada] = useState("");
   const [promocao, setPromocao] = useState(false);
@@ -22,6 +22,7 @@ export default function Header({ onNavigate }) {
     { nome: "Esportes", id: "esportes" },
     { nome: "Ao ar livre", id: "ar-livre" },
     { nome: "Promoções", id: "ofertas" },
+    { nome: "Favoritos", id: "favoritos" },
   ];
 
   function navegar(id) {
@@ -64,9 +65,7 @@ export default function Header({ onNavigate }) {
     if (categoria) {
       navegar(categoria.id);
     } else {
-      alert(
-        "Nenhuma categoria encontrada para essa pesquisa. Tente Roupas, Calçados, Acessórios ou outra categoria."
-      );
+      alert("Nenhuma categoria encontrada para essa pesquisa.");
     }
   }
 
@@ -85,6 +84,7 @@ export default function Header({ onNavigate }) {
           <h1>
             Pink<span>Sport</span>
           </h1>
+
           <small>ESPORTE • SAÚDE • VOCÊ</small>
         </div>
 
@@ -109,11 +109,14 @@ export default function Header({ onNavigate }) {
             </a>
 
             <a
-              href="#carrinho"
+              href="#"
               className="icon"
               onClick={(e) => {
                 e.preventDefault();
-                navegar("carrinho");
+
+                if (abrirCarrinho) {
+                  abrirCarrinho();
+                }
               }}
             >
               <FaShoppingCart />
@@ -128,7 +131,6 @@ export default function Header({ onNavigate }) {
           type="button"
           className="menu-left"
           onClick={() => setFiltrosAbertos(!filtrosAbertos)}
-          aria-expanded={filtrosAbertos}
         >
           <FaBars />
           <span>Todas as categorias</span>
@@ -157,22 +159,19 @@ export default function Header({ onNavigate }) {
             <h2>Filtrar produtos</h2>
 
             <button
-              type="button"
               className="fechar-filtros"
               onClick={() => setFiltrosAbertos(false)}
-              aria-label="Fechar filtros"
             >
               ×
             </button>
           </div>
 
           <div className="filtro-grupo">
-            <h3>Categoria</h3>
+            <h3>Categorias</h3>
 
             {categorias.map((categoria) => (
               <button
                 key={categoria.id}
-                type="button"
                 onClick={() => navegar(categoria.id)}
               >
                 {categoria.nome}
@@ -222,12 +221,12 @@ export default function Header({ onNavigate }) {
                 checked={promocao}
                 onChange={(e) => setPromocao(e.target.checked)}
               />
+
               Somente produtos em promoção
             </label>
           </div>
 
           <button
-            type="button"
             className="limpar-filtros"
             onClick={() => {
               setCorSelecionada("");

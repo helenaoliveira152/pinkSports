@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 
 import Header from "./components/Header/Header";
@@ -22,11 +23,17 @@ import {
   PiMountains,
   PiTag,
   PiHeart,
-  PiShoppingBag,
 } from "react-icons/pi";
 
 function AppConteudo() {
+  const [carrinhoAberto, setCarrinhoAberto] = useState(false);
+
   function navegarPara(secao) {
+    if (secao === "carrinho") {
+      setCarrinhoAberto(true);
+      return;
+    }
+
     const elemento = document.getElementById(secao);
 
     if (elemento) {
@@ -39,7 +46,10 @@ function AppConteudo() {
 
   return (
     <>
-      <Header onNavigate={navegarPara} />
+      <Header
+        onNavigate={navegarPara}
+        abrirCarrinho={() => setCarrinhoAberto(true)}
+      />
 
       <Banner />
 
@@ -99,20 +109,32 @@ function AppConteudo() {
           </h2>
           <Favoritos />
         </section>
-
-        <section id="carrinho" className="secao-produtos">
-          <h2>
-            <PiShoppingBag /> Carrinho
-          </h2>
-          <Carrinho />
-        </section>
       </main>
+
+      {carrinhoAberto && (
+        <>
+          <div
+            className="overlay-carrinho"
+            onClick={() => setCarrinhoAberto(false)}
+          />
+
+          <aside className="painel-carrinho">
+            <div className="cabecalho-carrinho">
+              <h2>🛒 Meu Carrinho</h2>
+
+              <button onClick={() => setCarrinhoAberto(false)}>
+                ×
+              </button>
+            </div>
+
+            <Carrinho />
+          </aside>
+        </>
+      )}
     </>
   );
 }
 
-function App() {
+export default function App() {
   return <AppConteudo />;
 }
-
-export default App;

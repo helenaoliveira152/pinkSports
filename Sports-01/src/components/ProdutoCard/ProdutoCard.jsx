@@ -1,12 +1,20 @@
 import { useState } from "react";
 import { FaHeart, FaShoppingCart } from "react-icons/fa";
+
 import { useCarrinho } from "../../context/CarrinhoContext.jsx";
+import { useFavoritos } from "../../context/FavoritosContext.jsx";
+
+import "./ProdutoCard.css";
 
 export default function ProdutoCard({ produto }) {
-  const [favorito, setFavorito] = useState(false);
-  const [mostrarMensagem, setMostrarMensagem] = useState(false);
-
   const { adicionarCarrinho } = useCarrinho();
+
+  const {
+    alternarFavorito,
+    favoritoExiste,
+  } = useFavoritos();
+
+  const [mostrarMensagem, setMostrarMensagem] = useState(false);
 
   function adicionarAoCarrinho() {
     adicionarCarrinho(produto);
@@ -19,26 +27,35 @@ export default function ProdutoCard({ produto }) {
   }
 
   function comprarAgora() {
-    // Checkout futuramente
+    adicionarCarrinho(produto);
+
+    alert("Produto adicionado ao carrinho!");
   }
+
+  const favorito = favoritoExiste(produto.id);
 
   return (
     <>
       {mostrarMensagem && (
         <div className="notificacao">
-          <span>O produto foi colocado no carrinho com sucesso! ❤️</span>
+          <span>
+            O produto foi colocado no carrinho com sucesso! ❤️
+          </span>
 
-          <button onClick={() => setMostrarMensagem(false)}>
+          <button
+            onClick={() => setMostrarMensagem(false)}
+          >
             ×
           </button>
         </div>
       )}
 
       <article className="produto-card">
+
         <button
           type="button"
           className={`favorito ${favorito ? "ativo" : ""}`}
-          onClick={() => setFavorito(!favorito)}
+          onClick={() => alternarFavorito(produto)}
         >
           <FaHeart />
         </button>
@@ -75,8 +92,10 @@ export default function ProdutoCard({ produto }) {
           className="adicionar"
           onClick={adicionarAoCarrinho}
         >
-          <FaShoppingCart /> Adicionar ao carrinho
+          <FaShoppingCart />
+          Adicionar ao carrinho
         </button>
+
       </article>
     </>
   );

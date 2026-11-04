@@ -1,35 +1,27 @@
 import ProdutoCard from "../ProdutoCard/ProdutoCard.jsx";
+import { useFavoritos } from "../../context/FavoritosContext.jsx";
 import "./Favoritos.css";
 
-const produtos = [
-  {
-    id: "favorito-1",
-    nome: "Conjunto Premium",
-    descricao: "Nosso conjunto mais amado pelas clientes.",
-    preco: 189.90,
-    imagem: "/imagens/favorito1.png",
-  },
-  {
-    id: "favorito-2",
-    nome: "Top Fitness",
-    descricao: "Conforto e sustentação para qualquer treino.",
-    preco: 79.90,
-    imagem: "/imagens/favorito2.png",
-  },
-  {
-    id: "favorito-3",
-    nome: "Legging Essential",
-    descricao: "Modelagem perfeita e tecido confortável.",
-    preco: 109.90,
-    imagem: "/imagens/favorito3.png",
-  },
-];
-
 export default function Favoritos() {
+  const { favoritos } = useFavoritos();
+
+  if (favoritos.length === 0) {
+    return (
+      <div className="favoritos-vazio">
+        <h3>❤️ Nenhum produto favoritado</h3>
+
+        <p>
+          Clique no coração dos produtos para adicioná-los
+          aos seus favoritos.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="favoritos">
       <div className="produtos-grid">
-        {produtos.map((produto) => (
+        {favoritos.map((produto) => (
           <ProdutoCard
             key={produto.id}
             produto={produto}
