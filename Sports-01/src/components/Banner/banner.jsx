@@ -9,25 +9,37 @@ function Banner() {
         backgroundImage: `url(${bannerImg})`,
       }}
     >
+      <div className="banner-overlay"></div>
+
       <div className="banner-conteudo">
-        <p className="banner-subtitulo">
-          MOVIMENTO É LIBERDADE ♥
-        </p>
+
+        <span className="banner-tag">
+          NOVA COLEÇÃO 2026
+        </span>
 
         <h1>
-          Seu esporte,
-          <span> do seu jeito!</span>
+          Vista sua
+          <span> melhor versão.</span>
         </h1>
 
         <p className="banner-descricao">
-          Roupas, calçados e acessórios para te
-          <br />
-          acompanhar em todas as fases.
+          Moda fitness feminina com conforto, elegância
+          e qualidade para acompanhar todos os seus
+          desafios.
         </p>
 
-        <a href="#ofertas" className="banner-botao">
-          Ver ofertas <span>→</span>
-        </a>
+        <div className="banner-botoes">
+
+          <a href="#roupas" className="banner-botao">
+            Comprar agora
+          </a>
+
+          <a href="#ofertas" className="banner-botao-secundario">
+            Ver ofertas
+          </a>
+
+        </div>
+
       </div>
     </section>
   );

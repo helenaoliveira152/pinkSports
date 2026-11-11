@@ -2,224 +2,388 @@
    RESET
 =========================== */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 100px;
+html{
+    scroll-behavior:smooth;
+    scroll-padding-top:110px;
 }
 
 html,
 body,
-#root {
-    width: 100%;
-    min-height: 100vh;
-    overflow-x: hidden;
+#root{
+    width:100%;
+    min-height:100vh;
+    overflow-x:hidden;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f1c4d1;
-    color: #333;
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f8edf2;
+    color:#333;
 }
 
 /* ===========================
    CONTEÚDO
 =========================== */
 
-main {
-    width: 100%;
-    padding-bottom: 50px;
+main{
+    width:100%;
+    padding:50px 0 90px;
 }
 
-.conteudo-principal {
-    width: 100%;
+.conteudo-principal{
+    width:100%;
 }
 
 /* ===========================
    SEÇÕES
 =========================== */
 
-.secao-produtos {
-    width: calc(100% - 40px);
-    margin: 20px;
-    padding: 40px;
-    background: #fff5f8;
-    border: 1px solid #e6d6dc;
-    border-radius: 18px;
-    scroll-margin-top: 110px;
+.secao-produtos{
+    width:min(94%,1450px);
+    margin:70px auto;
+    padding:50px;
+    background:#ffffff;
+    border-radius:26px;
+    border:1px solid #f2d8e2;
+    box-shadow:0 10px 30px rgba(0,0,0,.06);
+    scroll-margin-top:120px;
+    transition:.35s;
 }
 
-.secao-produtos h2 {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-
-    margin-bottom: 30px;
-
-    padding: 14px 22px;
-
-    border-radius: 14px;
-
-    background: #ffe6ef;
-
-    border: 1px solid #d8648d;
-
-    color: #971d50;
-
-    font-size: 30px;
+.secao-produtos:hover{
+    box-shadow:0 16px 40px rgba(0,0,0,.08);
 }
 
-.secao-produtos h2 svg {
-    font-size: 30px;
+.titulo-secao{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin-bottom:45px;
+}
+
+.secao-produtos h2{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+
+    color:#b51f5b;
+
+    font-size:38px;
+    font-weight:700;
+
+    margin-bottom:12px;
+}
+
+.secao-produtos h2 svg{
+    font-size:34px;
+}
+
+.secao-produtos h2::after{
+    content:"";
+    display:block;
+    width:80px;
+    height:4px;
+    border-radius:50px;
+    background:#f48fb1;
+
+    position:absolute;
+    transform:translateY(42px);
+}
+
+.titulo-secao p{
+    color:#777;
+    font-size:17px;
+    text-align:center;
+    max-width:600px;
+    line-height:1.7;
+}
+
+/* ===========================
+   GRID DOS PRODUTOS
+=========================== */
+
+.lista-produtos,
+.produtos-grid,
+.grid-produtos{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+    margin-top:20px;
 }
 
 /* ===========================
    LINKS
 =========================== */
 
-a {
-    text-decoration: none;
-    color: inherit;
+a{
+    text-decoration:none;
+    color:inherit;
 }
 
-nav ul {
-    list-style: none;
+nav ul{
+    list-style:none;
 }
 
-nav ul li a {
-    transition: .25s;
+nav ul li a{
+    transition:.3s;
 }
 
-nav ul li a:hover {
-    color: #c44a76;
+nav ul li a:hover{
+    color:#d81b60;
 }
 
-.menu-left {
-    transition: .25s;
-    cursor: pointer;
+.menu-left{
+    cursor:pointer;
+    transition:.3s;
 }
 
-.menu-left:hover {
-    color: #c44a76;
+.menu-left:hover{
+    color:#d81b60;
 }
 
 /* ===========================
    OVERLAY
 =========================== */
 
-.overlay-carrinho {
-
-    position: fixed;
-
-    inset: 0;
-
-    background: rgba(0,0,0,.35);
-
-    backdrop-filter: blur(2px);
-
-    z-index: 9998;
-
-    animation: aparecerOverlay .3s ease;
-
+.overlay-carrinho{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.35);
+    backdrop-filter:blur(3px);
+    z-index:9998;
+    animation:aparecerOverlay .3s;
 }
 
 /* ===========================
    PAINEL DO CARRINHO
 =========================== */
 
-.painel-carrinho {
-    position: fixed;
-    top: 12px;
-    right: 12px;
-    bottom: 12px;
+.painel-carrinho{
+    position:fixed;
+    top:15px;
+    right:15px;
+    bottom:15px;
 
-    width: 420px;
-    max-width: calc(100vw - 24px);
+    width:430px;
+    max-width:calc(100vw - 30px);
 
-    background: #fff;
+    background:#fff;
 
-    border-radius: 18px;
+    border-radius:22px;
 
-    box-shadow: 0 10px 35px rgba(0, 0, 0, .18);
+    box-shadow:0 18px 45px rgba(0,0,0,.18);
 
-    overflow: hidden;
+    overflow:hidden;
 
-    display: flex;
-    flex-direction: column;
+    display:flex;
+    flex-direction:column;
 
-    z-index: 9999;
+    z-index:9999;
 
-    animation: abrirCarrinho .35s ease;
+    animation:abrirCarrinho .35s ease;
 }
 
-.cabecalho-carrinho {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.cabecalho-carrinho{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 
-    padding: 20px 24px;
+    padding:22px 26px;
 
-    background: #fff4f8;
+    background:linear-gradient(90deg,#fff4f8,#ffeaf2);
 
-    border-bottom: 1px solid #f2d3df;
+    border-bottom:1px solid #f2d7e2;
 }
 
-.cabecalho-carrinho h2 {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.cabecalho-carrinho h2{
+    display:flex;
+    align-items:center;
+    gap:12px;
 
-    color: #b33768;
+    color:#c2185b;
 
-    font-size: 22px;
-    font-weight: 700;
+    font-size:24px;
+    font-weight:700;
 }
 
-.cabecalho-carrinho button {
-    width: 36px;
-    height: 36px;
+.cabecalho-carrinho button{
+    width:42px;
+    height:42px;
 
-    border: none;
-    border-radius: 50%;
+    border:none;
+    border-radius:50%;
 
-    background: #d65782;
+    background:#d81b60;
 
-    color: white;
+    color:#fff;
 
-    font-size: 22px;
+    font-size:24px;
 
-    cursor: pointer;
+    cursor:pointer;
 
-    transition: .25s;
+    transition:.3s;
 }
 
-.cabecalho-carrinho button:hover {
-    background: #be436d;
-    transform: rotate(90deg);
+.cabecalho-carrinho button:hover{
+    background:#b8124d;
+    transform:rotate(90deg) scale(1.05);
 }
 
-.painel-carrinho .carrinho-conteudo {
-    flex: 1;
-    overflow-y: auto;
+.painel-carrinho .carrinho-conteudo{
+    flex:1;
+    overflow-y:auto;
 }
 
 .painel-carrinho::-webkit-scrollbar,
-.carrinho-conteudo::-webkit-scrollbar {
-    width: 8px;
+.carrinho-conteudo::-webkit-scrollbar{
+    width:8px;
 }
 
 .painel-carrinho::-webkit-scrollbar-thumb,
-.carrinho-conteudo::-webkit-scrollbar-thumb {
-    background: #d65782;
-    border-radius: 50px;
+.carrinho-conteudo::-webkit-scrollbar-thumb{
+    background:#d81b60;
+    border-radius:20px;
 }
 
 .painel-carrinho::-webkit-scrollbar-track,
-.carrinho-conteudo::-webkit-scrollbar-track {
-    background: #fafafa;
+.carrinho-conteudo::-webkit-scrollbar-track{
+    background:#fafafa;
+}
+
+/* ===========================
+   ANIMAÇÕES
+=========================== */
+
+@keyframes abrirCarrinho{
+
+    from{
+        opacity:0;
+        transform:translateX(80px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+
+}
+
+@keyframes aparecerOverlay{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+@keyframes aparecer{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* ===========================
+   SCROLL
+=========================== */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#f6f6f6;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#d81b60;
+    border-radius:50px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#bf1652;
+}
+
+/* ===========================
+   RESPONSIVIDADE
+=========================== */
+
+@media(max-width:1200px){
+
+    .secao-produtos{
+        padding:40px;
+    }
+
+}
+
+@media(max-width:900px){
+
+    .secao-produtos{
+        width:95%;
+        padding:30px;
+        margin:50px auto;
+    }
+
+    .secao-produtos h2{
+        font-size:30px;
+    }
+
+    .titulo-secao p{
+        font-size:15px;
+    }
+
+    .painel-carrinho{
+        width:100%;
+        max-width:100%;
+        top:0;
+        right:0;
+        bottom:0;
+        border-radius:0;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .secao-produtos{
+        padding:22px;
+        border-radius:18px;
+    }
+
+    .secao-produtos h2{
+        font-size:26px;
+        text-align:center;
+    }
+
+    .secao-produtos h2 svg{
+        font-size:24px;
+    }
+
+    .titulo-secao{
+        margin-bottom:30px;
+    }
+
+    .titulo-secao p{
+        font-size:14px;
+        line-height:1.6;
+    }
+
 }

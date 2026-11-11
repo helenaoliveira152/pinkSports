@@ -1,0 +1,207 @@
+.footer{
+
+    margin-top:80px;
+
+    background:linear-gradient(180deg,#fff0f6,#ffdce8);
+
+    border-top:1px solid #f3cddd;
+
+}
+
+.footer-container{
+
+    max-width:1300px;
+
+    margin:auto;
+
+    padding:60px 40px;
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr 1fr 1fr;
+
+    gap:50px;
+
+}
+
+.footer-col h2{
+
+    font-size:38px;
+
+    color:#333;
+
+    margin-bottom:18px;
+
+}
+
+.footer-col h2 span{
+
+    color:#d81b60;
+
+}
+
+.footer-col h3{
+
+    color:#d81b60;
+
+    margin-bottom:20px;
+
+}
+
+.footer-col p{
+
+    color:#666;
+
+    line-height:1.8;
+
+    margin-bottom:8px;
+
+}
+
+.footer-col a{
+
+    display:block;
+
+    color:#666;
+
+    margin-bottom:12px;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+}
+
+.footer-col a:hover{
+
+    color:#d81b60;
+
+    padding-left:6px;
+
+}
+
+.redes{
+
+    display:flex;
+
+    gap:16px;
+
+}
+
+.redes a{
+
+    width:45px;
+
+    height:45px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:50%;
+
+    background:white;
+
+    color:#d81b60;
+
+    font-size:20px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+.redes a:hover{
+
+    background:#d81b60;
+
+    color:white;
+
+}
+
+.footer-info{
+
+    border-top:1px solid #f1c8d8;
+
+    border-bottom:1px solid #f1c8d8;
+
+    padding:22px 30px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:70px;
+
+    flex-wrap:wrap;
+
+}
+
+.footer-info div{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:#555;
+
+    font-weight:600;
+
+}
+
+.footer-info svg{
+
+    color:#d81b60;
+
+}
+
+.footer-copy{
+
+    text-align:center;
+
+    padding:25px;
+
+    color:#777;
+
+    font-size:14px;
+
+}
+
+@media(max-width:900px){
+
+.footer-container{
+
+grid-template-columns:1fr 1fr;
+
+}
+
+}
+
+@media(max-width:650px){
+
+.footer-container{
+
+grid-template-columns:1fr;
+
+text-align:center;
+
+}
+
+.redes{
+
+justify-content:center;
+
+}
+
+.footer-info{
+
+flex-direction:column;
+
+gap:20px;
+
+}
+
+}
